@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  sh:
+    #image: node:14.15.1-alpine3.12
+    build: .
+    tty: true
+    init: true
+    extra_hosts:
+      - "archive.ubuntu.com:160.26.2.187"
+        #working_dir: /app
+    working_dir: ${APP_DIR}
+    #command: "nvim ."
+    #command: "ls"
+    restart: always
+    volumes:
+      - deve-home:/root
+        #- "${APP_DIR}:/app"
+      - "${APP_DIR}:${APP_DIR}"
+      - ./init.vim:/root/.config/nvim/init.vim
+        #network_mode: "host"
+        #expose:
+        #  - "49900"
+        #ports:
+        #  - "49900:49900"
+    logging:
+      driver: journald
+      options:
+        tag: "{{.Name}}"
+volumes:
+  deve-home:
+    driver: local
