@@ -18,6 +18,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   git \
   neovim \
   nodejs \
+  ripgrep \
   tzdata && \
   curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
   apt-get install -y nodejs && \
