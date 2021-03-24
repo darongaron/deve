@@ -16,16 +16,19 @@ FROM ubuntu:20.04
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   curl \
   git \
+  locales \
   neovim \
   nodejs \
   ripgrep \
   tzdata && \
+  locale-gen ja_JP.UTF-8 && \
   curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
   apt-get install -y nodejs && \
   apt-get clean && rm -rf /var/lib/apt/lists/* && \
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ENV TZ Asia/Tokyo
+ENV LANG ja_JP.UTF-8
 #VOLUME /root
 
 #### Set local to jp.

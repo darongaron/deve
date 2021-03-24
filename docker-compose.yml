@@ -13,6 +13,8 @@ services:
     #command: "nvim ."
     #command: "ls"
     restart: always
+    #environment:
+    #  - GIT_PAGER="LESSCHARSET=utf-8 less"
     volumes:
       - deve-home:/root
         #- "${APP_DIR}:/app"

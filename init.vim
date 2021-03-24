@@ -52,6 +52,7 @@ call plug#begin()
   Plug 'nblock/vim-dokuwiki'
   Plug 'cespare/vim-toml'
   Plug 'leafgarland/typescript-vim'
+  Plug 'tpope/vim-fugitive'
   "Plug 'chriskempson/base16-vim'
 call plug#end()
 
