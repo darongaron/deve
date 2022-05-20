@@ -2,27 +2,23 @@ version: "3.7"
 
 services:
   sh:
-    #image: node:14.15.1-alpine3.12
-    build: .
-    tty: true
+    build:
+      context: .
+      args: 
+        - NVIM_FILE=${NVIM_FILE}
+        - GO_DL_URL=${GO_DL_URL}
+        #args: ["NVIM_FILE=${NVIM_FILE}", "GO_DL_URL=${GO_DL_URL}"]
     init: true
+    tty: true
     extra_hosts:
       - "archive.ubuntu.com:160.26.2.187"
-        #working_dir: /app
     working_dir: ${APP_DIR}
-    #command: "nvim ."
-    #command: "ls"
     restart: always
-    #environment:
-    #  - GIT_PAGER="LESSCHARSET=utf-8 less"
     volumes:
       - deve-home:/root
-        #- "${APP_DIR}:/app"
       - "${APP_DIR}:${APP_DIR}"
       - ./init.vim:/root/.config/nvim/init.vim
         #network_mode: "host"
-        #expose:
-        #  - "49900"
         #ports:
         #  - "49900:49900"
     logging:
